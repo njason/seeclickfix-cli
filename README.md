@@ -7,3 +7,9 @@ https://seeclickfix.com/enhanced_watch_areas/2649
 There are also other watch areas
 
 https://seeclickfix.com/jersey-city/watch-areas
+
+Example:
+
+```
+go run main.go report -place=jersey-city -category=trees
+```
