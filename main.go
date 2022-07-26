@@ -6,10 +6,25 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 type IssuesResp struct {
 	Issues	[]Issue	`json:"issues"`
+	Metadata Metadata `json:"metadata"`
+}
+
+type Metadata struct {
+	Pagination struct {
+		Entries         int         `json:"entries"`
+		Page            int         `json:"page"`
+		PerPage         int         `json:"per_page"`
+		Pages           int         `json:"pages"`
+		NextPage        *int				`json:"next_page"`
+		NextPageURL     *string			`json:"next_page_url"`
+		PreviousPage		*int				`json:"previous_page"`
+		PreviousPageURL *string			`json:"previous_page_url"`
+	} `json:"pagination"`
 }
 
 type Issue struct {
@@ -91,7 +106,7 @@ func main() {
 func report(placeUrl string, categoryName string) {
 	switch categoryName {
 	case "trees":
-		issues := getTreeRequests(placeUrl)
+		issues := issuesRequest(placeUrl, 1)
 		fmt.Println(issues)
 	default:
 		fmt.Println("expected 'trees' category")
@@ -99,10 +114,11 @@ func report(placeUrl string, categoryName string) {
 	}
 }
 
-func getTreeRequests(placeUrl string) []Issue {
+func issuesRequest(placeUrl string, page int) []Issue {
 	req, _ := http.NewRequest("GET", "https://seeclickfix.com/api/v2/issues", nil)
 	query := req.URL.Query()
-	query.Add("place-url", placeUrl)
+	query.Add("place_url", placeUrl)
+	query.Add("page", strconv.FormatInt(int64(page), 10))
 	req.URL.RawQuery = query.Encode()
 
 	rawResp, _ := client.Do(req)
@@ -113,6 +129,11 @@ func getTreeRequests(placeUrl string) []Issue {
 	if err != nil {
 		panic(err)
 	}
-	
+
+	// paginate recursively
+	if resp.Metadata.Pagination.NextPage != nil {
+		return append(resp.Issues, issuesRequest(placeUrl, page+1)...)
+	}
+
 	return resp.Issues
 }
