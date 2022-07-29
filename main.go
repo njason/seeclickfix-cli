@@ -181,7 +181,7 @@ func csvFormat(issues []Issue) [][]string {
 	for _, issue := range issues {
 		lat := fmt.Sprintf("%f", issue.Point.Coordinates[1])
 		lng := fmt.Sprintf("%f", issue.Point.Coordinates[0])
-		record := []string{issue.Summary, issue.CreatedAt, issue.HTMLURL, lat, lng}
+		record := []string{issue.Summary, issue.Status, issue.CreatedAt, issue.HTMLURL, lat, lng}
 		csvData = append(csvData, record)
 	}
 
