@@ -1,0 +1,59 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+&{429 Too Many Requests 429 HTTP/1.1 1 1 map[Cache-Control:[no-cache] Content-Type:[application/json; charset=utf-8] Date:[Fri, 29 Jul 2022 03:11:47 GMT] P3p:[CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"] Retry-After:[13] Server:[nginx/1.14.0 + Phusion Passenger(R) 6.0.13] Set-Cookie:[_scf_session_key=8b1bdda015d93b592c426d8de1815984; domain=.seeclickfix.com; path=/; secure; HttpOnly; SameSite=None] Status:[429 Too Many Requests] Strict-Transport-Security:[max-age=63072000] Vary:[Origin] X-Frame-Options:[ALLOWALL] X-Powered-By:[Phusion Passenger(R) 6.0.13] X-Request-Id:[3494a259-785e-4b0d-93f0-e52758a18191] X-Runtime:[0.060293]] 0xc00055a8c0 -1 [chunked] true false map[] 0xc000558800 0xc0001fa630}
+summary,status,created_at,link,lat,lng
+Tree Pruning Request,2022-07-28T18:33:25-04:00,https://seeclickfix.com/issues/12918014,40.710519,-74.092799
+Tree Pruning Request,2022-07-28T14:30:57-04:00,https://seeclickfix.com/issues/12916500,40.722429,-74.066555
+Tree Removal Request,2022-07-28T13:25:25-04:00,https://seeclickfix.com/issues/12915944,40.751294,-74.050199
+Tree Pruning Request,2022-07-28T13:22:32-04:00,https://seeclickfix.com/issues/12915922,40.746495,-74.046614
+Trees - General Inquiry,2022-07-27T18:34:00-04:00,https://seeclickfix.com/issues/12912084,40.740198,-74.049931
+Tree Pruning Request,2022-07-27T14:03:57-04:00,https://seeclickfix.com/issues/12910354,40.753671,-74.045170
+Trees - General Inquiry,2022-07-26T21:33:23-04:00,https://seeclickfix.com/issues/12906717,40.747129,-74.044633
+Tree Pruning Request,2022-07-26T08:29:01-04:00,https://seeclickfix.com/issues/12901288,40.691224,-74.090064
+Tree Stump Removal Request,2022-07-25T21:14:09-04:00,https://seeclickfix.com/issues/12900231,40.747129,-74.044633
+Tree Branch Pick Up Request,2022-07-25T12:40:59-04:00,https://seeclickfix.com/issues/12896810,40.727469,-74.046298
+Trees - General Inquiry,2022-07-25T10:31:24-04:00,https://seeclickfix.com/issues/12895475,40.723820,-74.067504
+Tree Branch Pick Up Request,2022-07-24T18:18:46-04:00,https://seeclickfix.com/issues/12892794,40.719780,-74.072863
+Tree Pruning Request,2022-07-24T16:23:41-04:00,https://seeclickfix.com/issues/12892472,40.748032,-74.052009
+Tree Removal Request,2022-07-24T15:00:30-04:00,https://seeclickfix.com/issues/12892248,40.747503,-74.045054
+Trees - General Inquiry,2022-07-24T10:21:53-04:00,https://seeclickfix.com/issues/12891489,40.723904,-74.067449
+Tree Removal Request,2022-07-23T12:50:14-04:00,https://seeclickfix.com/issues/12889350,40.703311,-74.099645
+Trees - General Inquiry,2022-07-22T21:46:20-04:00,https://seeclickfix.com/issues/12888056,40.737923,-74.058202
+Trees - General Inquiry,2022-07-22T21:09:21-04:00,https://seeclickfix.com/issues/12887968,40.722280,-74.080283
+Trees - General Inquiry,2022-07-22T17:01:26-04:00,https://seeclickfix.com/issues/12887182,40.726191,-74.048055
+Tree Pruning Request,2022-07-22T15:06:34-04:00,https://seeclickfix.com/issues/12886544,40.744661,-74.044166
+Tree Branch Pick Up Request,2022-07-22T14:21:21-04:00,https://seeclickfix.com/issues/12886292,40.741011,-74.050603
+Trees - General Inquiry,2022-07-22T12:32:32-04:00,https://seeclickfix.com/issues/12885566,40.721476,-74.047063
+Animal Issues,2022-07-22T12:05:02-04:00,https://seeclickfix.com/issues/12885369,40.740573,-74.045719
+Tree Removal Request,2022-07-22T06:54:52-04:00,https://seeclickfix.com/issues/12883603,40.722135,-74.046230
+Tree Pruning Request,2022-07-22T00:44:13-04:00,https://seeclickfix.com/issues/12883374,40.707602,-74.096793
+Tree Pruning Request,2022-07-21T23:23:56-04:00,https://seeclickfix.com/issues/12883275,40.707586,-74.096819
+Tree Stump Removal Request,2022-07-21T22:25:43-04:00,https://seeclickfix.com/issues/12883161,40.720947,-74.042681
+Trees - General Inquiry,2022-07-21T22:18:27-04:00,https://seeclickfix.com/issues/12883145,40.721098,-74.046175
+Trees - General Inquiry,2022-07-21T18:07:10-04:00,https://seeclickfix.com/issues/12882286,40.731561,-74.074445
+Tree Pruning Request,2022-07-21T16:51:17-04:00,https://seeclickfix.com/issues/12881858,40.740352,-74.050323
+Tree Pruning Request,2022-07-21T16:48:03-04:00,https://seeclickfix.com/issues/12881842,40.714040,-74.038825
+Tree Removal Request,2022-07-21T15:28:31-04:00,https://seeclickfix.com/issues/12881333,40.717363,-74.081361
+Tree Removal Request,2022-07-21T15:18:12-04:00,https://seeclickfix.com/issues/12881257,40.700174,-74.083056

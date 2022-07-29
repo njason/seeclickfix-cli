@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 )
 
 type IssuesResp struct {
@@ -147,17 +148,25 @@ func issuesRequest(placeUrl string, page int) []Issue {
 	query.Add("page", strconv.FormatInt(int64(page), 10))
 	req.URL.RawQuery = query.Encode()
 
-	rawResp, _ := client.Do(req)
+	rawResp, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
 	defer rawResp.Body.Close()
 
 	var resp IssuesResp
-	err := json.NewDecoder(rawResp.Body).Decode(&resp)
+	err = json.NewDecoder(rawResp.Body).Decode(&resp)
 	if err != nil {
+		fmt.Println(err)
 		panic(err)
 	}
 
 	// paginate recursively
 	if resp.Metadata.Pagination.NextPage != nil {
+		// rate limit is 20 request per minute.
+		time.Sleep(3 * time.Second)
+
 		return append(resp.Issues, issuesRequest(placeUrl, page+1)...)
 	}
 
