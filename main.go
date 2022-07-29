@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"encoding/csv"
 	"flag"
 	"fmt"
 	"net/http"
@@ -86,7 +87,7 @@ var client = http.DefaultClient
 func main() {
     reportCmd := flag.NewFlagSet("report", flag.ExitOnError)
 		placeUrl := reportCmd.String("place", "", "Place URL, ex. jersey-city")
-    categoryName := reportCmd.String("category", "", "ex. trees")
+    category := reportCmd.String("category", "", "ex. trees")
 
     if len(os.Args) < 2 {
         fmt.Println("expected 'report' subcommand")
@@ -96,22 +97,47 @@ func main() {
     switch os.Args[1] {
 		case "report":
 			reportCmd.Parse(os.Args[2:])
-			report(*placeUrl, *categoryName);
+			report(*placeUrl, *category);
 		default:
 			fmt.Println("expected 'report' subcommand")
 			os.Exit(1)
     }
 }
 
-func report(placeUrl string, categoryName string) {
-	switch categoryName {
+func report(placeUrl string, category string) {
+	var issues = filterIssues(category, issuesRequest(placeUrl, 1))
+	csvData := csvFormat(issues)
+
+	csvWriter := csv.NewWriter(os.Stdout)
+	csvWriter.WriteAll(csvData) // calls Flush internally
+
+	if err := csvWriter.Error(); err != nil {
+		fmt.Println("error writing csv:", err)
+	}
+}
+
+func mapCategoryToOrganization(category string) string {
+	switch category {
 	case "trees":
-		issues := issuesRequest(placeUrl, 1)
-		fmt.Println(issues)
+		return "Trees"
 	default:
 		fmt.Println("expected 'trees' category")
 		os.Exit(1)
+		return ""  // why, go, why
 	}
+}
+
+func filterIssues(category string, issues []Issue) []Issue {
+	var organization = mapCategoryToOrganization(category)
+	var filteredIssues []Issue
+
+	for _, issue := range issues {
+		if issue.RequestType.Organization == organization {
+			filteredIssues = append(filteredIssues, issue)
+		}
+	}
+
+	return filteredIssues
 }
 
 func issuesRequest(placeUrl string, page int) []Issue {
@@ -136,4 +162,19 @@ func issuesRequest(placeUrl string, page int) []Issue {
 	}
 
 	return resp.Issues
+}
+
+func csvFormat(issues []Issue) [][]string {
+	csvData := [][]string{
+		{"summary", "status", "created_at", "link", "lat", "lng"},
+	}
+
+	for _, issue := range issues {
+		lat := fmt.Sprintf("%f", issue.Point.Coordinates[1])
+		lng := fmt.Sprintf("%f", issue.Point.Coordinates[0])
+		record := []string{issue.Summary, issue.CreatedAt, issue.HTMLURL, lat, lng}
+		csvData = append(csvData, record)
+	}
+
+	return csvData
 }

@@ -11,5 +11,5 @@ https://seeclickfix.com/jersey-city/watch-areas
 Example:
 
 ```
-go run main.go report -place=jersey-city -category=trees
+go run main.go report -place=jersey-city -category=trees>report.csv
 ```
