@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"encoding/csv"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"net/http"
@@ -12,20 +12,20 @@ import (
 )
 
 type IssuesResp struct {
-	Issues	[]Issue	`json:"issues"`
+	Issues   []Issue  `json:"issues"`
 	Metadata Metadata `json:"metadata"`
 }
 
 type Metadata struct {
 	Pagination struct {
-		Entries         int         `json:"entries"`
-		Page            int         `json:"page"`
-		PerPage         int         `json:"per_page"`
-		Pages           int         `json:"pages"`
-		NextPage        *int				`json:"next_page"`
-		NextPageURL     *string			`json:"next_page_url"`
-		PreviousPage		*int				`json:"previous_page"`
-		PreviousPageURL *string			`json:"previous_page_url"`
+		Entries         int     `json:"entries"`
+		Page            int     `json:"page"`
+		PerPage         int     `json:"per_page"`
+		Pages           int     `json:"pages"`
+		NextPage        *int    `json:"next_page"`
+		NextPageURL     *string `json:"next_page_url"`
+		PreviousPage    *int    `json:"previous_page"`
+		PreviousPageURL *string `json:"previous_page_url"`
 	} `json:"pagination"`
 }
 
@@ -86,23 +86,23 @@ type Issue struct {
 var client = http.DefaultClient
 
 func main() {
-    reportCmd := flag.NewFlagSet("report", flag.ExitOnError)
-		placeUrl := reportCmd.String("place", "", "Place URL, ex. jersey-city")
-    category := reportCmd.String("category", "", "ex. trees")
+	reportCmd := flag.NewFlagSet("report", flag.ExitOnError)
+	placeUrl := reportCmd.String("place", "", "Place URL, ex. jersey-city")
+	category := reportCmd.String("category", "", "ex. trees")
 
-    if len(os.Args) < 2 {
-        fmt.Println("expected 'report' subcommand")
-        os.Exit(1)
-    }
+	if len(os.Args) < 2 {
+		fmt.Println("expected 'report' subcommand")
+		os.Exit(1)
+	}
 
-    switch os.Args[1] {
-		case "report":
-			reportCmd.Parse(os.Args[2:])
-			report(*placeUrl, *category);
-		default:
-			fmt.Println("expected 'report' subcommand")
-			os.Exit(1)
-    }
+	switch os.Args[1] {
+	case "report":
+		reportCmd.Parse(os.Args[2:])
+		report(*placeUrl, *category)
+	default:
+		fmt.Println("expected 'report' subcommand")
+		os.Exit(1)
+	}
 }
 
 func report(placeUrl string, category string) {
@@ -124,7 +124,7 @@ func mapCategoryToOrganization(category string) string {
 	default:
 		fmt.Println("expected 'trees' category")
 		os.Exit(1)
-		return ""  // why, go, why
+		return "" // why, go, why
 	}
 }
 
